@@ -1,0 +1,38 @@
+
+<%= render "cropper" %>
+
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+    <%= form.label :filename %>
+    <%= form.text_field :filename, id: :post_filename %>
+  </div>
+
+<!--
+  <div class="field">
+    <%= form.label :picture %>
+    <%= form.text_field :picture, id: :post_picture %>
+  </div>
+-->
+  <%= form.hidden_field :picture, id: :post_picture %>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+

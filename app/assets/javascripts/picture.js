@@ -1,4 +1,4 @@
-$(document).ready(function(){
+document.addEventListener('turbolinks:load', function() {
 
 
 let result = document.querySelector('.result'),
@@ -10,14 +10,14 @@ save = document.querySelector('.save'),
 cropped = document.querySelector('.cropped'),
 dwn = document.querySelector('.download'),
 post_picture = document.querySelector('#post_picture'),
-upload = document.querySelector('#file-input'),
+file_input = document.querySelector('#file-input'),
 
 cropper = '';
 
 
 
 // on change show image with crop options
-upload.addEventListener('change', (e) => {
+file_input.addEventListener('change', (e) => {
   if (e.target.files.length) {
 
     const reader = new FileReader();
@@ -53,9 +53,27 @@ save.addEventListener('click',(e)=>{
 		width: img_w.value
 	}).toDataURL();
 
+
+
+
+
 	// cut the first section "data:image/png;base64,<encoded data>"
-	//img_post_picture = base64_img.replace(/^.*,/, '')
-	//img_len = img_post_picture.length
+	//matches = base64_img.match(/^data:(.*);base64,(.*)/);
+	//type = matches[1]
+	//data = matches[2]
+	//data_len = data.length
+
+  //var u8a = new Uint8Array(data_len);
+  //for (var i = 0; i < data_len; i++) {
+  //  u8a[i] = data.charCodeAt(i);
+  //}
+  //var blob = new Blob([u8a.buffer], {type: type});
+	//var my_form = document.getElementById("my_form");
+	//var form_data = new FormData(my_form);
+	//formData.append("name", blob);
+
+
+
 
 	post_picture.setAttribute('value', base64_img)
   cropped.classList.remove('hide');
